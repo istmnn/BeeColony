@@ -1,3 +1,9 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1795195046
+::res://::1795197969
 icon.svg::CompressedTexture2D::5955658481569836214::1795195043::1795195046::1::::<><><>0<>0<>1a8ed994cb881dd4da4cb142f4345027<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+README.md::TextFile::-1::1795195070::0::1::::<><><>0<>0<><>::
+::res://assets/::1795197460
+::res://assets/bees/::1795198365
+IMG_0903.PNG::CompressedTexture2D::7515113932887012511::1795198365::1795198365::1::::<><><>0<>0<>b8b35ee1287e774b3f7b25de0c84aa0a<>res://.godot/imported/IMG_0903.PNG-3e776d2ffcba214493cc13ecbc9fc32f.ctex::
+::res://scenes/::1795198115
+bee.tscn::PackedScene::4351621169585833637::1795198115::0::1::::<><><>0<>0<><>::uid://duu230b5advgq::::res://assets/bees/IMG_0902.PNG

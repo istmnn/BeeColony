@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b287thaf33ra8"]
+
+[ext_resource type="Texture2D" uid="uid://dfcm3f0qcj8wh" path="res://assets/bees/IMG_0903.PNG" id="1_1q2x0"]
+[ext_resource type="Script" uid="uid://bcf8w76lygg4v" path="res://scenes/bee.gd" id="1_ogg2i"]
+[ext_resource type="Script" uid="uid://dgcfdi6ftsm1x" path="res://scenes/bee_sprite.gd" id="2_vie5o"]
+
+[node name="Bee" type="Node2D" unique_id=98701546]
+script = ExtResource("1_ogg2i")
+
+[node name="BeeSprite" type="Sprite2D" parent="." unique_id=1469857911]
+texture_filter = 4
+position = Vector2(692, 314.98615)
+scale = Vector2(0.18055561, 0.18055567)
+texture = ExtResource("1_1q2x0")
+script = ExtResource("2_vie5o")

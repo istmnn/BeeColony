@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="BeeColony"
+run/main_scene="res://scenes/bee.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/aspect="expand"
 
 [physics]
