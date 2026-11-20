@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfcm3f0qcj8wh"
-path="res://.godot/imported/IMG_0903.PNG-3e776d2ffcba214493cc13ecbc9fc32f.ctex"
+path="res://.godot/imported/NormalBee.PNG-32a4fef8ae1b75026b23cc72ab242e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bees/IMG_0903.PNG"
-dest_files=["res://.godot/imported/IMG_0903.PNG-3e776d2ffcba214493cc13ecbc9fc32f.ctex"]
+source_file="res://assets/bees/NormalBee.PNG"
+dest_files=["res://.godot/imported/NormalBee.PNG-32a4fef8ae1b75026b23cc72ab242e92.ctex"]
 
 [params]
 
