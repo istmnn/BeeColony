@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8a0i6mk2snug"]
 
-[ext_resource type="Script" uid="uid://cs1kxqmdqwqto" path="res://scenes/normal_bee.gd" id="1_dk88t"]
+[ext_resource type="Script" uid="uid://cs1kxqmdqwqto" path="res://scripts/normal_bee.gd" id="1_dk88t"]
 
 [node name="NormalBee" type="Node2D" unique_id=1153464252]
 script = ExtResource("1_dk88t")

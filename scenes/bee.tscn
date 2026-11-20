@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b287thaf33ra8"]
 
-[ext_resource type="Script" uid="uid://bcf8w76lygg4v" path="res://scenes/bee.gd" id="1_ogg2i"]
-[ext_resource type="Script" uid="uid://dgcfdi6ftsm1x" path="res://scenes/bee_sprite.gd" id="2_vie5o"]
+[ext_resource type="Script" uid="uid://bcf8w76lygg4v" path="res://scripts/bee.gd" id="1_ogg2i"]
+[ext_resource type="Script" uid="uid://dgcfdi6ftsm1x" path="res://scripts/bee_sprite.gd" id="2_vie5o"]
 [ext_resource type="PackedScene" uid="uid://c8a0i6mk2snug" path="res://scenes/NormalBee.tscn" id="4_qf6nb"]
 
 [node name="Bee" type="Node2D" unique_id=98701546]

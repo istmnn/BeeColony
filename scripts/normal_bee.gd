@@ -1,5 +1,5 @@
 extends Node2D
-@onready var bee : Node2D = get_parent();
+@onready var bee  = get_parent();
 var move_speed = 80;
 
 
