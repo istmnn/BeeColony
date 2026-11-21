@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ebimqf0jh6hn"]
+
+[ext_resource type="Script" uid="uid://cjeta7p5pkfpn" path="res://room.gd" id="1_ffxv4"]
+
+[node name="Room" type="Node2D" unique_id=1557722708]
+script = ExtResource("1_ffxv4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=671175407]
+offset_left = -228.0
+offset_top = -145.0
+offset_right = 225.83456
+offset_bottom = 172.0
+expand_mode = 1

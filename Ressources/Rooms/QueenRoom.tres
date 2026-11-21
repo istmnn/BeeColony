@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomType" format=3 uid="uid://br03k5qmb4rub"]
+
+[ext_resource type="Script" uid="uid://bo74tqoqdd7ty" path="res://scripts/RoomType.gd" id="1_0ww88"]
+[ext_resource type="Texture2D" uid="uid://cy3n70wa1ehln" path="res://assets/Rooms/StandardRoom.PNG" id="2_8dk52"]
+
+[resource]
+script = ExtResource("1_0ww88")
+slots = 1
+texture = ExtResource("2_8dk52")
+name = "Thronsaal"
+metadata/_custom_type_script = "uid://bo74tqoqdd7ty"
