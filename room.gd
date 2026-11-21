@@ -2,7 +2,10 @@ extends Node2D
 class_name Room
 @export var adjecentRooms: Array[Room] = []
 @export var roomType : RoomType;
-var assigned : bool = false
+@export var assigned : bool = false
+signal entered(room: Room)
+signal exited(room: Room)
+signal clicked(room: Room)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,3 +22,31 @@ func setRoomType(newType: RoomType):
 		return
 	roomType = newType
 	$TextureRect.texture = newType.texture
+
+
+func _on_area_2d_mouse_entered():
+	entered.emit(self)
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	exited.emit(self)
+	pass # Replace with function body.
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		clicked.emit(self)
+	pass # Replace with function body.
+	
+func reset_texture() -> void:
+	$TextureRect.texture = null
+
+func set_texture(texture: Texture2D):
+	$TextureRect.texture = texture
+
+func valid_to_build()-> bool:
+	for room in adjecentRooms:
+		if(room.assigned): return true
+	return false
+	

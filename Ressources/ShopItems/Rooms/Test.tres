@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomShopItem" format=3 uid="uid://cykrrc0p8n66w"]
+
+[ext_resource type="Texture2D" uid="uid://bgevrii4edvgi" path="res://assets/UI/Wachs.PNG" id="1_jmfnb"]
+[ext_resource type="Script" uid="uid://jrvq7ybxi3vb" path="res://scripts/RoomsShopItem.gd" id="1_spxoi"]
+[ext_resource type="Texture2D" uid="uid://cy3n70wa1ehln" path="res://assets/Rooms/StandardRoom.PNG" id="2_6k4oi"]
+[ext_resource type="Resource" uid="uid://br03k5qmb4rub" path="res://Ressources/Rooms/QueenRoom.tres" id="3_ujmy4"]
+
+[resource]
+script = ExtResource("1_spxoi")
+roomType = ExtResource("3_ujmy4")
+icon = ExtResource("1_jmfnb")
+item = ExtResource("2_6k4oi")
+currency = 2
+metadata/_custom_type_script = "uid://jrvq7ybxi3vb"

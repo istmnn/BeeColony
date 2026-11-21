@@ -14,6 +14,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1925.0
 offset_bottom = 1086.0
+mouse_filter = 2
 
 [node name="Honig" type="TextureRect" parent="Control" unique_id=1175567356]
 texture_filter = 4

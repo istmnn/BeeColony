@@ -2,6 +2,7 @@ extends CanvasLayer
 var shop_scene = preload("res://scenes/shop.tscn")
 var active_shop: CanvasLayer = null
 var shop_visible : bool = false
+signal enterBuildModeSignal(room_data: RoomType)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +28,7 @@ func open_shop() -> void:
 		return
 
 	var instance := shop_scene.instantiate()
+	instance.room_selected.connect(enterBuildMode)
 	active_shop = instance as CanvasLayer
 	add_child(instance)
 
@@ -42,3 +44,7 @@ func _on_texture_button_pressed():
 		open_shop()
 	shop_visible = not shop_visible
 	pass # Replace with function body.
+
+func enterBuildMode(room_data: RoomType):
+	enterBuildModeSignal.emit(room_data)
+	pass

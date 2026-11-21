@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvu82saeighl8" path="res://scenes/shop_item.tscn" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://bh7nlhx7elqjj" path="res://scripts/shop.gd" id="1_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://bgevrii4edvgi" path="res://assets/UI/Wachs.PNG" id="3_1l46r"]
 
 [node name="Shop" type="CanvasLayer" unique_id=1504745297 node_paths=PackedStringArray("item_container")]
 script = ExtResource("1_xfvoa")
@@ -13,5 +14,45 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ShopItem" type="Node2D" parent="." unique_id=1588748321]
+
+[node name="Bienen" type="TextureButton" parent="." unique_id=1933853729]
+offset_left = 1746.0
+offset_top = 773.0
+offset_right = 1876.0
+offset_bottom = 903.0
+texture_normal = ExtResource("3_1l46r")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Bienen" unique_id=326639337]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 42.0
+offset_right = 103.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 24
+text = "Bienen"
+
+[node name="Räume" type="TextureButton" parent="." unique_id=1216539958]
+offset_left = 1746.0
+offset_top = 666.0
+offset_right = 1876.0
+offset_bottom = 796.0
+texture_normal = ExtResource("3_1l46r")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Räume" unique_id=506039315]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 42.0
+offset_right = 103.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 24
+text = "Räume"
+
+[connection signal="pressed" from="Bienen" to="." method="_on_bienen_pressed"]
+[connection signal="pressed" from="Räume" to="." method="_on_räume_pressed"]

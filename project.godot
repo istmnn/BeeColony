@@ -26,6 +26,13 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/aspect="expand"
 
+[input]
+
+cancel={
+"deadzone": 0.2,
+"events": []
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
