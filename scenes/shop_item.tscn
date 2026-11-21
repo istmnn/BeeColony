@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cvu82saeighl8"]
+
+[ext_resource type="Texture2D" uid="uid://dst408d2861vd" path="res://assets/UI/ShopInstance.PNG" id="1_6gmg1"]
+[ext_resource type="Script" uid="uid://dpuiyujglp1gi" path="res://scripts/shop_item_UI.gd" id="2_1d7d6"]
+
+[node name="ShopItem" type="TextureButton" unique_id=967237748]
+offset_left = 28.0
+offset_top = 801.0
+offset_right = 240.00934
+offset_bottom = 999.0
+texture_normal = ExtResource("1_6gmg1")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_1d7d6")
+
+[node name="Price" type="Label" parent="." unique_id=634111421]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 148.0
+offset_right = 155.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 27
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1501156826]
+texture_filter = 4
+layout_mode = 0
+offset_left = 57.0
+offset_top = 150.0
+offset_right = 92.0
+offset_bottom = 185.0
+expand_mode = 1
+
+[node name="Item" type="TextureRect" parent="." unique_id=245012342]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 37.0
+offset_right = 166.03537
+offset_bottom = 134.0
+expand_mode = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

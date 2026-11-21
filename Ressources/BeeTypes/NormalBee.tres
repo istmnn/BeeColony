@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BeeType" format=3 uid="uid://dt7h2uqup0vmq"]
+
+[ext_resource type="Script" uid="uid://bg5fjqfa51huy" path="res://scripts/BeeType.gd" id="1_4k4fa"]
+[ext_resource type="Texture2D" uid="uid://dfcm3f0qcj8wh" path="res://assets/bees/NormalBee.PNG" id="2_a2s1v"]
+
+[resource]
+script = ExtResource("1_4k4fa")
+move_speed = 80
+texture = ExtResource("2_a2s1v")
+metadata/_custom_type_script = "uid://bg5fjqfa51huy"

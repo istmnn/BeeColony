@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dukkjyiesiw0y"]
 
-[ext_resource type="Script" uid="uid://du0hxwne8qhpx" path="res://scenes/ui.gd" id="1_gdt2y"]
+[ext_resource type="Script" uid="uid://du0hxwne8qhpx" path="res://scripts/ui.gd" id="1_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://c6koqke8awock" path="res://assets/UI/Honig.PNG" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://qyx153ljkiqe" path="res://assets/UI/Nektar.PNG" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://bgevrii4edvgi" path="res://assets/UI/Wachs.PNG" id="3_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://dewfvhnxyyx5n" path="res://assets/UI/Plus.PNG" id="5_wm3ai"]
 
 [node name="UI" type="CanvasLayer" unique_id=827187632]
 script = ExtResource("1_gdt2y")
@@ -66,3 +67,12 @@ offset_top = 17.0
 offset_right = 108.0
 offset_bottom = 40.0
 text = "100"
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=218721652]
+offset_left = 1777.0
+offset_top = 891.0
+offset_right = 1866.0
+offset_bottom = 980.0
+texture_normal = ExtResource("5_wm3ai")
+ignore_texture_size = true
+stretch_mode = 0

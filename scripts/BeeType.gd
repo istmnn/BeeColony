@@ -1,15 +1,13 @@
-extends CanvasLayer
-
+class_name BeeType
+extends Resource
+@export var move_speed: int;
+@export var texture = Texture2D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Control/Honig/Label.text = str(Global.honig)
-	$Control/Nektar/Label.text = str(Global.nektar)
-	$Control/Wachs/Label.text = str(Global.wax)
 	pass

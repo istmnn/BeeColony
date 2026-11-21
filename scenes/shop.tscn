@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5lvamrd4pm5c"]
+
+[ext_resource type="PackedScene" uid="uid://cvu82saeighl8" path="res://scenes/shop_item.tscn" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://bh7nlhx7elqjj" path="res://scripts/shop.gd" id="1_xfvoa"]
+
+[node name="Shop" type="CanvasLayer" unique_id=1504745297 node_paths=PackedStringArray("item_container")]
+script = ExtResource("1_xfvoa")
+item_slot_scene = ExtResource("1_lx5au")
+item_container = NodePath("ShopItem")
+
+[node name="Control" type="Control" parent="." unique_id=934282243]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopItem" type="Node2D" parent="." unique_id=1588748321]

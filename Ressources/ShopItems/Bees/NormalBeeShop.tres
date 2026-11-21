@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BeeShopItem" format=3 uid="uid://vj2t6l0sftqk"]
+
+[ext_resource type="Resource" uid="uid://dt7h2uqup0vmq" path="res://Ressources/BeeTypes/NormalBee.tres" id="1_bxfp7"]
+[ext_resource type="Script" uid="uid://dlhjfq4qx2c3c" path="res://scripts/BeeShopItem.gd" id="1_mxf6e"]
+[ext_resource type="Texture2D" uid="uid://c6koqke8awock" path="res://assets/UI/Honig.PNG" id="2_bxfp7"]
+[ext_resource type="Texture2D" uid="uid://dfcm3f0qcj8wh" path="res://assets/bees/NormalBee.PNG" id="3_dkuui"]
+
+[resource]
+script = ExtResource("1_mxf6e")
+beeType = ExtResource("1_bxfp7")
+title = "Bee"
+price = 100
+icon = ExtResource("2_bxfp7")
+item = ExtResource("3_dkuui")
+currency = 1
+metadata/_custom_type_script = "uid://dlhjfq4qx2c3c"
