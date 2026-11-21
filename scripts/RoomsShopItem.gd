@@ -14,3 +14,6 @@ func _process(delta):
 
 func buy(buyer: Node):
 	pass
+
+func reduce_currency():
+	Global.try_spend(Global.Ressources.WAX, price);

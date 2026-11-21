@@ -45,6 +45,6 @@ func _on_texture_button_pressed():
 	shop_visible = not shop_visible
 	pass # Replace with function body.
 
-func enterBuildMode(room_data: RoomType):
-	enterBuildModeSignal.emit(room_data)
+func enterBuildMode(room_data: RoomType, shop_item: ShopItem):
+	enterBuildModeSignal.emit(room_data, shop_item)
 	pass

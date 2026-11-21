@@ -33,8 +33,8 @@ func spawn_shop_Item(shop_items: Array[ShopItem]):
 		item_container.add_child(slot)	
 			
 	pass
-func _on_roomItem_clicked(room_data: RoomType) -> void:
-	room_selected.emit(room_data)
+func _on_roomItem_clicked(room_data: RoomType, shopItem : ShopItem) -> void:
+	room_selected.emit(room_data, shopItem)
 
 
 func _on_bienen_pressed():

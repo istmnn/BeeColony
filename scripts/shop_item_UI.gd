@@ -9,8 +9,8 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_pressed() -> void:
-	if (shopItem != null &&  shopItem is RoomShopItem):
-		roomItem_clicked.emit(shopItem.roomType)
+	if (shopItem != null &&  shopItem is RoomShopItem && Global.get_amount(Global.Ressources.WAX) >= shopItem.price):
+		roomItem_clicked.emit(shopItem.roomType, shopItem)
 	buy()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.

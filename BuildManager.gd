@@ -2,6 +2,7 @@ extends Node2D
 
 var selected_room: RoomType = null
 var is_placing: bool = false
+var shop_item : ShopItem
 @onready var ghost_preview: TextureRect = $GhostPreview
 
 func _ready() -> void:
@@ -34,14 +35,16 @@ func start_placement(room_data: RoomType) -> void:
 func end_placement() -> void:
 	is_placing = false
 	selected_room = null
+	shop_item = null
 	stop_ghost()
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		end_placement();
 
-func _on_ui_enter_build_mode_signal(room_data):
+func _on_ui_enter_build_mode_signal(room_data, shopItem: ShopItem):
 	start_placement(room_data)
+	shop_item = shopItem
 	pass # Replace with function body.
 
 
@@ -59,6 +62,7 @@ func room_exited(room: Room):
 func room_clicked(room: Room):
 	if(is_placing == false || room.assigned || !room.valid_to_build()): return
 	room.setRoomType(selected_room);
+	shop_item.reduce_currency()
 	end_placement()
 	pass
 

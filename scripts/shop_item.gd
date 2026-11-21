@@ -12,3 +12,6 @@ extends Resource
 func buy(buyer: Node) :
 	push_warning("buy() ist für '%s' nicht implementiert." % title)
 	return false
+
+func reduce_currency():
+	pass
