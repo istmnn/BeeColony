@@ -9,9 +9,9 @@ func _ready() -> void:
 		if child.has_signal("entered"):
 			child.entered.connect(room_entered)
 		if child.has_signal("exited"):
-			child.entered.connect(room_exited)
+			child.exited.connect(room_exited)
 		if child.has_signal("clicked"):
-			child.entered.connect(room_clicked)
+			child.clicked.connect(room_clicked)
 	ghost_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ghost_preview.visible = false
 			
@@ -53,7 +53,7 @@ func room_entered(room: Room):
 
 func room_exited(room: Room):
 	if(is_placing == false || room.assigned || !room.valid_to_build()): return
-	#room.reset_texture()
+	room.reset_texture()
 	pass
 	
 func room_clicked(room: Room):
