@@ -8,6 +8,5 @@ script = ExtResource("1_ogg2i")
 
 [node name="BeeSprite" type="Sprite2D" parent="." unique_id=1469857911]
 texture_filter = 4
-position = Vector2(692, 314.98615)
 scale = Vector2(0.18055561, 0.18055567)
 script = ExtResource("2_vie5o")

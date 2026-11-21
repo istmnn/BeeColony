@@ -7,7 +7,7 @@ enum Ressources {
 }
 var balances: Dictionary = {
 	Ressources.NEKTAR: 100,
-	Ressources.HONEY: 100,
+	Ressources.HONEY: 500,
 	Ressources.WAX: 100,
 }
 

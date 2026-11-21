@@ -1,5 +1,7 @@
 extends CanvasLayer
-
+var shop_scene = preload("res://scenes/shop.tscn")
+var active_shop: CanvasLayer = null
+var shop_visible : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +15,30 @@ func _process(delta):
 	$Control/Nektar/Label.text = str(Global.get_amount(Global.Ressources.NEKTAR))
 	$Control/Wachs/Label.text = str(Global.get_amount(Global.Ressources.WAX))
 	pass
+
+
+func _on_texture_button_toggled(toggled_on):
+	
+	pass # Replace with function body.
+
+func open_shop() -> void:
+	if active_shop != null and is_instance_valid(active_shop):
+		active_shop.visible = true
+		return
+
+	var instance := shop_scene.instantiate()
+	active_shop = instance as CanvasLayer
+	add_child(instance)
+
+func close_shop() -> void:
+	if active_shop != null and is_instance_valid(active_shop):
+		active_shop.queue_free()
+		active_shop = null
+
+func _on_texture_button_pressed():
+	if(shop_visible):
+		close_shop()
+	if(!shop_visible):
+		open_shop()
+	shop_visible = not shop_visible
+	pass # Replace with function body.

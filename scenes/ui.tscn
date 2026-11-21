@@ -69,10 +69,13 @@ offset_bottom = 40.0
 text = "100"
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=218721652]
-offset_left = 1777.0
-offset_top = 891.0
-offset_right = 1866.0
-offset_bottom = 980.0
+offset_left = 1759.0
+offset_top = 890.0
+offset_right = 1863.0
+offset_bottom = 994.39246
+toggle_mode = true
 texture_normal = ExtResource("5_wm3ai")
 ignore_texture_size = true
 stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
