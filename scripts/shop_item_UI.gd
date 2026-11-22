@@ -32,4 +32,5 @@ func buy():
 	shopItem.buy(get_parent());
 	
 func spawnBee(bee: Bee):
+	Global.beeAmount += 1
 	beeSpawned.emit(bee)

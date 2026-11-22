@@ -16,6 +16,8 @@ func _process(delta):
 	$Control/Honig/Label.text = str(Global.get_amount(Global.Ressources.HONEY)) + "/" + str(Global.maxStorage)
 	$Control/Nektar/Label.text = str(Global.get_amount(Global.Ressources.NEKTAR)) + "/"  + str(Global.maxStorage)
 	$Control/Wachs/Label.text = str(Global.get_amount(Global.Ressources.WAX)) + "/"  + str(Global.maxStorage)
+	$Control/TextureRect/Label.text = str(Global.beeAmount) + "/" + str(Global.bedAmount)
+	$Time.text = "%02d:%02d (%s)" % [Global.hours, Global.minutes,  "Nacht" if Global.is_night else "Tag"]
 	pass
 
 

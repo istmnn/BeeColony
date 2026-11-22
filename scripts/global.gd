@@ -1,6 +1,17 @@
 extends Node
 var maxStorage : int = 300
 var bedAmount : int = 0
+var beeAmount: int = 0
+var day_time_scale: float = 60.0
+var night_speed_multiplier: float = 2.0
+var day_start_hour: int = 6   # 06:00 Uhr
+var night_start_hour: int = 18 # 18:00 Uhr
+var hours : int
+var minutes : int
+var is_night
+
+## Startzeit in Sekunden (6 * 3600 = 06:00:00)
+var game_seconds: float = 6.0 * 3600.0
 
 enum Ressources {
 	NEKTAR,
@@ -39,4 +50,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var current_hour := int(game_seconds / 3600.0) % 24
+	is_night = current_hour < day_start_hour or current_hour >= night_start_hour
+	var current_scale := day_time_scale
+	if is_night:
+		current_scale *= night_speed_multiplier
+	# 24 Stunden = 86400 Sekunden; fmod sorgt dafür, dass nach 23:59:59 wieder 00:00:00 kommt
+	game_seconds = fmod(game_seconds + delta * current_scale, 86400.0)
+	var total_sec := int(game_seconds)
+	hours = total_sec / 3600
+	minutes = (total_sec % 3600) / 60
+	
 	pass
