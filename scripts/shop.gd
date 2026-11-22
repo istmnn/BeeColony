@@ -11,7 +11,9 @@ const MAX_SPAWNED_ITEMS: int = 5
 @export var item_slot_scene: PackedScene
 @export var item_container: Node
 signal room_selected(room_data: RoomType)
+signal beeSpawned(bee:Bee)
 const ITEM_SPACING_X: float = 250.0
+signal beeBought(bee: Bee)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +40,7 @@ func spawn_shop_Item(shop_items: Array[ShopItem]):
 		slot.position.x = spawned_index * ITEM_SPACING_X
 		slot.assignShopItem(item_data)
 		slot.roomItem_clicked.connect(_on_roomItem_clicked)
+		slot.beeSpawned.connect(beeSpawn)
 		item_container.add_child(slot)
 		spawned_index += 1
 			
@@ -54,3 +57,6 @@ func _on_bienen_pressed():
 func _on_räume_pressed():
 	spawn_shop_Item(room_shop_items)
 	pass # Replace with function body.
+
+func beeSpawn(bee: Bee):
+	beeBought.emit(bee)

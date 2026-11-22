@@ -3,6 +3,7 @@ var shop_scene = preload("res://scenes/shop.tscn")
 var active_shop: CanvasLayer = null
 var shop_visible : bool = false
 signal enterBuildModeSignal(room_data: RoomType)
+signal beeSpawned(bee: Bee)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func open_shop() -> void:
 
 	var instance := shop_scene.instantiate()
 	instance.room_selected.connect(enterBuildMode)
+	instance.beeBought.connect(beeSpawn)
 	active_shop = instance as CanvasLayer
 	add_child(instance)
 
@@ -48,3 +50,6 @@ func _on_texture_button_pressed():
 func enterBuildMode(room_data: RoomType, shop_item: ShopItem):
 	enterBuildModeSignal.emit(room_data, shop_item)
 	pass
+
+func beeSpawn(bee:Bee):
+	beeSpawned.emit(bee)

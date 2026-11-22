@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ce7liowm36t5" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ebimqf0jh6hn" path="res://scenes/room.tscn" id="2_0wfyh"]
 [ext_resource type="Resource" uid="uid://br03k5qmb4rub" path="res://Ressources/Rooms/QueenRoom.tres" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://cxujyh4h1oxcq" path="res://scripts/bee_manger.gd" id="6_tefeu"]
 
 [node name="MAIN" type="Node2D" unique_id=468867636 node_paths=PackedStringArray("build_manager")]
 script = ExtResource("1_tbgi4")
@@ -152,4 +153,8 @@ expand_mode = 1
 [node name="BuildManager" type="Node2D" parent="." unique_id=854773699]
 script = ExtResource("1_jyhfs")
 
+[node name="BeeManger" type="Node2D" parent="." unique_id=501643578]
+script = ExtResource("6_tefeu")
+
+[connection signal="beeSpawned" from="UI" to="BeeManger" method="_on_ui_bee_spawned"]
 [connection signal="enterBuildModeSignal" from="UI" to="BuildManager" method="_on_ui_enter_build_mode_signal"]

@@ -22,8 +22,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(assigned_room == null): move_speed = 0
-	else: move_speed = beeType.move_speed
+	if(assigned_room != null): move_speed = 0
+	elif(beeType != null): move_speed = beeType.move_speed
 	pass
 
 func assignBeeType(newType):

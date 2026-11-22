@@ -9,8 +9,6 @@ radius = 22.203604
 
 [node name="Bee" type="Node2D" unique_id=98701546]
 script = ExtResource("1_ogg2i")
-move_speed = null
-idle = null
 
 [node name="BeeSprite" type="Sprite2D" parent="." unique_id=1469857911]
 texture_filter = 4
@@ -18,10 +16,11 @@ scale = Vector2(0.18055561, 0.18055567)
 texture = ExtResource("2_ogg2i")
 script = ExtResource("2_vie5o")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1666206924]
+[node name="Area2D" type="Area2D" parent="BeeSprite" unique_id=1666206924]
+scale = Vector2(5.5384603, 5.5384583)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1433457927]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeeSprite/Area2D" unique_id=1433457927]
 position = Vector2(-5, 3)
 shape = SubResource("CircleShape2D_3xd07")
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="BeeSprite/Area2D" to="." method="_on_area_2d_input_event"]

@@ -39,7 +39,6 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		clicked.emit(self)
-		print("test")
 	pass # Replace with function body.
 	
 func reset_texture() -> void:
