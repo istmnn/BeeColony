@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://l081ht6ghsjq" path="res://scripts/BuildManager.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dukkjyiesiw0y" path="res://scenes/ui.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://ce7liowm36t5" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ebimqf0jh6hn" path="res://scenes/room.tscn" id="2_0wfyh"]
 [ext_resource type="Resource" uid="uid://br03k5qmb4rub" path="res://Ressources/Rooms/QueenRoom.tres" id="4_jyhfs"]
 
-[node name="MAIN" type="Node2D" unique_id=468867636]
-script = ExtResource("1_jyhfs")
+[node name="MAIN" type="Node2D" unique_id=468867636 node_paths=PackedStringArray("build_manager")]
+script = ExtResource("1_tbgi4")
+build_manager = NodePath("BuildManager")
 
 [node name="UI" parent="." unique_id=827187632 instance=ExtResource("1_o5qli")]
 
@@ -147,4 +149,7 @@ offset_right = 170.36691
 offset_bottom = 119.0
 expand_mode = 1
 
-[connection signal="enterBuildModeSignal" from="UI" to="." method="_on_ui_enter_build_mode_signal"]
+[node name="BuildManager" type="Node2D" parent="." unique_id=854773699]
+script = ExtResource("1_jyhfs")
+
+[connection signal="enterBuildModeSignal" from="UI" to="BuildManager" method="_on_ui_enter_build_mode_signal"]

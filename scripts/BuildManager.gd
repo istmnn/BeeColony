@@ -1,12 +1,14 @@
 extends Node2D
+class_name Build_Manager
 
 var selected_room: RoomType = null
 var is_placing: bool = false
 var shop_item : ShopItem
-@onready var ghost_preview: TextureRect = $GhostPreview
+@onready var ghost_preview: TextureRect = $"../GhostPreview"
 
-func _ready() -> void:
-	for child in $Rooms.get_children():
+
+func readyMethode() -> void:
+	for child in $"../Rooms".get_children():
 		if child.has_signal("entered"):
 			child.entered.connect(room_entered)
 		if child.has_signal("exited"):
@@ -18,7 +20,7 @@ func _ready() -> void:
 			
 	pass
 	
-func _process(_delta: float) -> void:
+func processMethode(_delta: float) -> void:
 	if ghost_preview.visible:
 		# Zentriert das TextureRect grob am Mauszeiger
 		ghost_preview.global_position = get_global_mouse_position() - ghost_preview.size * 0.5
@@ -49,7 +51,6 @@ func _on_ui_enter_build_mode_signal(room_data, shopItem: ShopItem):
 
 
 func room_entered(room: Room):
-	
 	if(is_placing == false || room.assigned || !room.valid_to_build()): return
 	room.set_texture(preload("res://assets/Rooms/RoomEmpty.PNG"));
 	pass
