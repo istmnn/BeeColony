@@ -7,7 +7,8 @@
 script = ExtResource("1_jqiub")
 product = 2
 amount_per_cycle = 1
-productionSpeed = 15.0
+usedProductAmount = 3
+productionSpeed = 2.0
 maxStorage = 100
 slots = 2
 texture = ExtResource("2_kqqgu")

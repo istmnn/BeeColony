@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var room_shop_items: Array[ShopItem] = [
 	preload("res://Ressources/ShopItems/Rooms/HoneyRoom1.tres"),
 	preload("res://Ressources/ShopItems/Rooms/WaxRoom1.tres"),
+	preload("res://Ressources/ShopItems/Rooms/NektarRoom1.tres")
 ]
 const MAX_SPAWNED_ITEMS: int = 5
 @export var item_slot_scene: PackedScene

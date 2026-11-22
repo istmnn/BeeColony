@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomShopItem" format=3 uid="uid://wbf60nfbsb4u"]
+
+[ext_resource type="Script" uid="uid://jrvq7ybxi3vb" path="res://scripts/RoomsShopItem.gd" id="1_10sb0"]
+[ext_resource type="Texture2D" uid="uid://bgevrii4edvgi" path="res://assets/UI/Wachs.PNG" id="1_dhtxk"]
+[ext_resource type="Texture2D" uid="uid://beqksehexkohe" path="res://assets/Rooms/NektarRoom1.PNG" id="2_j3nix"]
+[ext_resource type="Resource" uid="uid://drqctgrxwyklh" path="res://Ressources/Rooms/NektarRoom.tres" id="3_xtor3"]
+
+[resource]
+script = ExtResource("1_10sb0")
+roomType = ExtResource("3_xtor3")
+icon = ExtResource("1_dhtxk")
+item = ExtResource("2_j3nix")
+currency = 2
+metadata/_custom_type_script = "uid://jrvq7ybxi3vb"
