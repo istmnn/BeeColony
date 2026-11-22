@@ -3,6 +3,7 @@ extends Resource
 @export var slots : int;
 @export var texture : Texture2D;
 @export var name : String;
+var filledSlots: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

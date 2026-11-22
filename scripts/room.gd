@@ -15,6 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(roomType != null):	roomType._process(delta)
 	pass
 
 func setRoomType(newType: RoomType):
