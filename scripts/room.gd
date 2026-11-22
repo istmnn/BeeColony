@@ -6,6 +6,7 @@ class_name Room
 signal entered(room: Room)
 signal exited(room: Room)
 signal clicked(room: Room)
+@onready var area: Area2D = $Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,4 +52,23 @@ func valid_to_build()-> bool:
 	for room in adjecentRooms:
 		if(room.assigned): return true
 	return false
-	
+
+func is_mouse_over_area() -> bool:
+	if area == null or not is_instance_valid(area):
+		return false
+
+	var space_state := area.get_world_2d().direct_space_state
+	var query := PhysicsPointQueryParameters2D.new()
+	query.position = area.get_global_mouse_position()
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.collision_mask = area.collision_layer
+
+	var results := space_state.intersect_point(query)
+	for hit in results:
+		if hit.get("collider") == area:
+			return true
+
+	return false
+
+	return false

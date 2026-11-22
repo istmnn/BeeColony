@@ -9,7 +9,9 @@ signal drag_started(worker: Bee)
 signal drag_ended(worker: Bee, drop_global_position: Vector2)
 var is_dragging: bool = false
 var _drag_offset: Vector2 = Vector2.ZERO
-var assigned_room: Node = null
+var assigned_room: Room = null
+var statmoveSpeed : int
+@onready var beeSprite = $BeeSprite
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +30,7 @@ func _process(delta):
 
 func assignBeeType(newType):
 	move_speed = newType.move_speed
+	statmoveSpeed = newType.move_speed
 	$BeeSprite.texture = newType.texture 
 	pass
 
@@ -47,3 +50,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		is_dragging = false
 		drag_ended.emit(self, get_global_mouse_position())
+
+func assignRoom(room : Room):
+	print("assigned")
+	pass

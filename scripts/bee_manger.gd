@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	if(draggedBee != null):
 		draggedBee.move_speed = 0
-		draggedBee.global_position = get_global_mouse_position()
+		draggedBee.beeSprite.global_position = get_global_mouse_position()
 	pass
 
 
@@ -22,10 +22,14 @@ func _on_ui_bee_spawned(bee: Bee):
 	pass # Replace with function body.
 
 func dragBee(bee: Bee):
+	print("test")
 	draggedBee = bee
 	pass
 	
 func assignbee(bee: Bee, position : Vector2):
-	draggedBee.move_speed = draggedBee.beeType.move_speed
+	for room in $"../Rooms".get_children():
+		if(room.assigned && room.is_mouse_over_area()):
+			bee.assignRoom(room)
+	draggedBee.move_speed = draggedBee.statmoveSpeed
 	draggedBee = null
 	pass
