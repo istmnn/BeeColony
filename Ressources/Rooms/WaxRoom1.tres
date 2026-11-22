@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomTypeRessource" format=3 uid="uid://dpjin2ptwomim"]
+
+[ext_resource type="Script" uid="uid://vvm8festqs7w" path="res://scripts/RoomTypeRessource.gd" id="1_jqiub"]
+[ext_resource type="Texture2D" uid="uid://bdpy5ywbchxml" path="res://assets/Rooms/WaxRoom1.PNG" id="2_kqqgu"]
+
+[resource]
+script = ExtResource("1_jqiub")
+product = 2
+amount_per_cycle = 1
+productionSpeed = 15.0
+maxStorage = 100
+slots = 2
+texture = ExtResource("2_kqqgu")
+metadata/_custom_type_script = "uid://vvm8festqs7w"

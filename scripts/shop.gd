@@ -4,12 +4,13 @@ extends CanvasLayer
 ]
 @export var room_shop_items: Array[ShopItem] = [
 	preload("res://Ressources/ShopItems/Rooms/HoneyRoom1.tres"),
-	
+	preload("res://Ressources/ShopItems/Rooms/WaxRoom1.tres"),
 ]
 const MAX_SPAWNED_ITEMS: int = 5
 @export var item_slot_scene: PackedScene
 @export var item_container: Node
 signal room_selected(room_data: RoomType)
+const ITEM_SPACING_X: float = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,15 +24,21 @@ func _process(delta):
 func spawn_shop_Item(shop_items: Array[ShopItem]):
 	for child in item_container.get_children():
 		child.queue_free()
+
 	var spawn_count: int = mini(shop_items.size(), MAX_SPAWNED_ITEMS)
+	var spawned_index: int = 0
+
 	for i in range(spawn_count):
 		var item_data: ShopItem = shop_items[i]
 		if item_data == null:
 			continue
+
 		var slot := item_slot_scene.instantiate()
-		slot.assignShopItem(item_data);
+		slot.position.x = spawned_index * ITEM_SPACING_X
+		slot.assignShopItem(item_data)
 		slot.roomItem_clicked.connect(_on_roomItem_clicked)
-		item_container.add_child(slot)	
+		item_container.add_child(slot)
+		spawned_index += 1
 			
 	pass
 func _on_roomItem_clicked(room_data: RoomType, shopItem : ShopItem) -> void:
