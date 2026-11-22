@@ -13,9 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Control/Honig/Label.text = str(Global.get_amount(Global.Ressources.HONEY))
-	$Control/Nektar/Label.text = str(Global.get_amount(Global.Ressources.NEKTAR))
-	$Control/Wachs/Label.text = str(Global.get_amount(Global.Ressources.WAX))
+	$Control/Honig/Label.text = str(Global.get_amount(Global.Ressources.HONEY)) + "/" + str(Global.maxStorage)
+	$Control/Nektar/Label.text = str(Global.get_amount(Global.Ressources.NEKTAR)) + "/"  + str(Global.maxStorage)
+	$Control/Wachs/Label.text = str(Global.get_amount(Global.Ressources.WAX)) + "/"  + str(Global.maxStorage)
 	pass
 
 

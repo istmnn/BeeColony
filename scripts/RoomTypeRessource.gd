@@ -29,7 +29,7 @@ func _process(delta):
 	pass
 	
 func produce():
-	if storedAmount >= maxStorage:
+	if storedAmount >= Global.maxStorage:
 		return
 
 	if usedProductAmount > 0 and not _can_consume_input():
@@ -38,7 +38,7 @@ func produce():
 	if usedProductAmount > 0:
 		_consume_input()
 
-	var space_left = maxStorage - storedAmount
+	var space_left = Global.maxStorage - storedAmount
 	var added = mini(amount_per_cycle, space_left)
 	storedAmount += added
 	Global.add_currency(product, added)

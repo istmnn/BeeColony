@@ -1,4 +1,5 @@
 extends Node
+var maxStorage : int = 300
 
 enum Ressources {
 	NEKTAR,
@@ -27,6 +28,8 @@ func add_currency(currency: Ressources, amount: int) -> void:
 	if amount < 0:
 		return
 	balances[currency] = get_amount(currency) + amount
+	if (balances[currency] > maxStorage ):
+		balances[currency] = maxStorage
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():

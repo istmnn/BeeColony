@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dcqdvvotb3s6k"]
+
+[ext_resource type="Texture2D" uid="uid://cmyhgxs8k73j6" path="res://assets/UI/Start.PNG" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://coojuqjhfwii7" path="res://scripts/start.gd" id="2_bodal"]
+[ext_resource type="Texture2D" uid="uid://dfcm3f0qcj8wh" path="res://assets/bees/NormalBee.PNG" id="2_u80x2"]
+
+[sub_resource type="SystemFont" id="SystemFont_dwbtc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0auqf"]
+
+[node name="Start" type="Node2D" unique_id=1400839673]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=127593395]
+offset_right = 2122.6667
+offset_bottom = 1194.0
+texture = ExtResource("1_jaeev")
+
+[node name="Start" type="Button" parent="." unique_id=1345573866]
+offset_left = 857.0
+offset_top = 684.0
+offset_right = 1039.4517
+offset_bottom = 785.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_dwbtc")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_0auqf")
+text = "START"
+script = ExtResource("2_bodal")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=731054246]
+offset_left = 1394.0
+offset_top = 574.0
+offset_right = 1880.4951
+offset_bottom = 999.0
+texture = ExtResource("2_u80x2")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2" unique_id=1608011598]
+layout_mode = 0
+offset_left = -1238.0
+offset_top = -508.0
+offset_right = -1043.4019
+offset_bottom = -338.0
+texture = ExtResource("2_u80x2")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/TextureRect2" unique_id=1642544169]
+layout_mode = 0
+offset_left = -99.0
+offset_top = 184.0
+offset_right = 30.350525
+offset_bottom = 297.0
+texture = ExtResource("2_u80x2")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/TextureRect2/TextureRect2" unique_id=1039084131]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 9.0
+offset_right = 288.69455
+offset_bottom = 76.0
+texture = ExtResource("2_u80x2")
+expand_mode = 1
+flip_h = true
+
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]

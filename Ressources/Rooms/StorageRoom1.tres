@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StorageRoom" format=3 uid="uid://df7iqlc01mh5u"]
+
+[ext_resource type="Script" uid="uid://dj4l2ut58h5et" path="res://scripts/StorageRoom.gd" id="1_p7ahx"]
+[ext_resource type="Texture2D" uid="uid://dhvbqu60nwnmi" path="res://assets/Rooms/StorageRoom.PNG" id="2_tq3ys"]
+
+[resource]
+script = ExtResource("1_p7ahx")
+StorageAmount = 50
+slots = 2
+texture = ExtResource("2_tq3ys")
+metadata/_custom_type_script = "uid://dj4l2ut58h5et"
