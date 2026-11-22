@@ -1,5 +1,6 @@
 extends Node
 var maxStorage : int = 300
+var bedAmount : int = 0
 
 enum Ressources {
 	NEKTAR,

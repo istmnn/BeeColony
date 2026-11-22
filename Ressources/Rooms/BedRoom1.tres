@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SleepRoom" format=3 uid="uid://bwxtl2i7c655x"]
+
+[ext_resource type="Script" uid="uid://byqk4eo1hi8qf" path="res://scripts/SleepRoom.gd" id="1_ud810"]
+[ext_resource type="Texture2D" uid="uid://dln3e627818ku" path="res://assets/Rooms/SleepingQuaters1.PNG" id="2_5xudi"]
+
+[resource]
+script = ExtResource("1_ud810")
+bedAmount = 5
+texture = ExtResource("2_5xudi")
+metadata/_custom_type_script = "uid://byqk4eo1hi8qf"
