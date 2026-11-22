@@ -12,7 +12,8 @@ func _ready():
 func _on_pressed() -> void:
 	if (shopItem != null &&  shopItem is RoomShopItem && Global.get_amount(Global.Ressources.WAX) >= shopItem.price):
 		roomItem_clicked.emit(shopItem.roomType, shopItem)
-	if (shopItem != null &&  shopItem is BeeShopItem && Global.get_amount(Global.Ressources.WAX) >= shopItem.price):
+	if (shopItem != null &&  shopItem is BeeShopItem && Global.get_amount(Global.Ressources.HONEY) >= shopItem.price):
+
 		shopItem.beeSpawned.connect(spawnBee)	
 	buy()
 		
