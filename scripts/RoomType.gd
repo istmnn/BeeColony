@@ -4,6 +4,7 @@ extends Resource
 @export var texture : Texture2D;
 @export var name : String;
 var filledSlots: int
+var assignedBees : Array[Bee]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,3 +20,11 @@ func produce():
 
 func effect():
 	pass
+	
+func addBee(bee: Bee):
+	assignedBees.append(bee)
+	filledSlots += 1
+	
+func removeBee(bee: Bee):
+	assignedBees.erase(bee)
+	filledSlots -= 1

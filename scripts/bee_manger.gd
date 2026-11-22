@@ -22,13 +22,13 @@ func _on_ui_bee_spawned(bee: Bee):
 	pass # Replace with function body.
 
 func dragBee(bee: Bee):
-	print("test")
 	draggedBee = bee
 	pass
 	
 func assignbee(bee: Bee, position : Vector2):
+	bee.removeRoom()
 	for room in $"../Rooms".get_children():
-		if(room.assigned && room.is_mouse_over_area()):
+		if(room.assigned && room.is_mouse_over_area() && room.canBeAssigned()):
 			bee.assignRoom(room)
 	draggedBee.move_speed = draggedBee.statmoveSpeed
 	draggedBee = null

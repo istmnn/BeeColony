@@ -8,6 +8,7 @@ signal produced(product: Global.Ressources, amount: int, current_stored: int)
 @export var productionSpeed: float
 @export var maxStorage : int
 
+var speed: float
 var storedAmount = 0 
 var _progress: float = 0.0
 
@@ -19,12 +20,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if productionSpeed <= 0.0:
+	if speed <= 0.0 || filledSlots == 0:
 		return
-
 	_progress += delta
-	while _progress >= productionSpeed:
-		_progress -= productionSpeed
+	while _progress >= speed:
+		_progress -= speed
 		produce()
 	pass
 	
@@ -57,3 +57,27 @@ func _consume_input() -> void:
 	pass
 func effect():
 	pass
+
+func getWorkSpeed():
+	if productionSpeed <= 0.0:
+		return 0.0
+
+	var bee_speed: float = 0.0
+	for bee in assignedBees:
+		if bee != null and is_instance_valid(bee):
+			bee_speed += float(bee.workspeed)
+
+	if bee_speed <= 0.0:
+		return 0.0
+
+	var effective_time := productionSpeed / bee_speed
+	speed = maxf(effective_time, 0.05)
+	
+	
+func addBee(bee: Bee):
+	super.addBee(bee)
+	getWorkSpeed()
+	
+func removeBee(bee: Bee):
+	super.removeBee(bee)
+	getWorkSpeed()

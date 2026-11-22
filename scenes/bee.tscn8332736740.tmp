@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b287thaf33ra8"]
+
+[ext_resource type="Script" uid="uid://bcf8w76lygg4v" path="res://scripts/bee.gd" id="1_ogg2i"]
+[ext_resource type="Texture2D" uid="uid://dfcm3f0qcj8wh" path="res://assets/bees/NormalBee.PNG" id="2_ogg2i"]
+[ext_resource type="Script" uid="uid://dgcfdi6ftsm1x" path="res://scripts/bee_sprite.gd" id="2_vie5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xd07"]
+radius = 22.203604
+
+[node name="Bee" type="Node2D" unique_id=98701546]
+script = ExtResource("1_ogg2i")
+
+[node name="BeeSprite" type="Sprite2D" parent="." unique_id=1469857911]
+texture_filter = 4
+scale = Vector2(0.18055561, 0.18055567)
+texture = ExtResource("2_ogg2i")
+script = ExtResource("2_vie5o")
+
+[node name="Area2D" type="Area2D" parent="BeeSprite" unique_id=1666206924]
+scale = Vector2(5.5384603, 5.5384583)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeeSprite/Area2D" unique_id=1433457927]
+position = Vector2(-5, 3)
+shape = SubResource("CircleShape2D_3xd07")
+
+[connection signal="input_event" from="BeeSprite/Area2D" to="." method="_on_area_2d_input_event"]

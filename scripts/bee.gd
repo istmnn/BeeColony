@@ -11,6 +11,7 @@ var is_dragging: bool = false
 var _drag_offset: Vector2 = Vector2.ZERO
 var assigned_room: Room = null
 var statmoveSpeed : int
+var workspeed: float
 @onready var beeSprite = $BeeSprite
 
 
@@ -25,12 +26,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(assigned_room != null): move_speed = 0
-	elif(beeType != null): move_speed = beeType.move_speed
 	pass
 
 func assignBeeType(newType):
 	move_speed = newType.move_speed
 	statmoveSpeed = newType.move_speed
+	workspeed = newType.workspeed
 	$BeeSprite.texture = newType.texture 
 	pass
 
@@ -52,5 +53,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		drag_ended.emit(self, get_global_mouse_position())
 
 func assignRoom(room : Room):
-	print("assigned")
+	
+	assigned_room = room
+	move_speed = 0
+	room.addBee(self)
 	pass
+	
+func removeRoom():
+	if(assigned_room != null):
+		assigned_room.removeBee(self)
+	assigned_room = null	
+	move_speed = statmoveSpeed
+	

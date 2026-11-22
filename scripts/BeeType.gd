@@ -1,7 +1,8 @@
 class_name BeeType
 extends Resource
 @export var move_speed: int;
-@export var texture = Texture2D;
+@export var texture : Texture2D;
+@export var workspeed : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

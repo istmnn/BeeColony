@@ -71,4 +71,12 @@ func is_mouse_over_area() -> bool:
 
 	return false
 
-	return false
+func canBeAssigned() -> bool:
+	if(roomType.slots == 0): return false
+	return (roomType.slots > roomType.filledSlots && assigned)
+
+func addBee(bee: Bee):
+	roomType.addBee(bee)
+	
+func removeBee(bee: Bee):
+	roomType.removeBee(bee)
