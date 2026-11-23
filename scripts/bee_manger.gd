@@ -30,6 +30,6 @@ func assignbee(bee: Bee, position : Vector2):
 	for room in $"../Rooms".get_children():
 		if(room.assigned && room.is_mouse_over_area() && room.canBeAssigned()):
 			bee.assignRoom(room)
-	draggedBee.move_speed = draggedBee.statmoveSpeed
+	bee.move_speed = bee.statmoveSpeed
 	draggedBee = null
 	pass

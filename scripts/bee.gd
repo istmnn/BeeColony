@@ -2,7 +2,6 @@ class_name Bee
 extends Node2D
 
 @export var move_speed: float
-@export var idle: bool
 @onready var sprite: Sprite2D = $BeeSprite
 @export var sprite_image: Texture2D
 @export var beeType: BeeType
@@ -30,7 +29,6 @@ const ROOM_ARRIVAL_THRESHOLD: float = 12.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	idle = true
 	sprite.texture = sprite_image
 
 
@@ -105,8 +103,7 @@ func wakeUp():
 		move_speed = float(statmoveSpeed)
 	if assigned_room != null:
 		move_to_room(assigned_room)
-	else:
-		idle = true
+	
 
 
 func _is_wake_time_reached() -> bool:
@@ -132,7 +129,7 @@ func move_to_room(room: Room) -> void:
 
 	target_room = room
 	_is_moving_to_room = true
-	idle = false
+
 
 	var random_offset = Vector2(
 		randf_range(-room_spread_radius, room_spread_radius),

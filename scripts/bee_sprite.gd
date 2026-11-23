@@ -16,8 +16,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	move_speed = parent.move_speed
-	if(parent.idle):
-		idle(delta);
+	idle(delta);
 	
 func idle(delta: float):
 	time_passed += delta
