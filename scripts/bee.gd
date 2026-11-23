@@ -2,6 +2,7 @@ class_name Bee
 extends Node2D
 
 @export var move_speed: float
+@export var idle: bool = true
 @onready var sprite: Sprite2D = $BeeSprite
 @export var sprite_image: Texture2D
 @export var beeType: BeeType
@@ -27,12 +28,12 @@ var _is_moving_to_room: bool = false
 const ROOM_ARRIVAL_THRESHOLD: float = 12.0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite.texture = sprite_image
+	idle = true
+	if sprite != null and sprite_image != null:
+		sprite.texture = sprite_image
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_dragging:
 		return
@@ -45,7 +46,10 @@ func _process(delta):
 		return
 
 	if assigned_room != null or sleeping:
+		idle = true
 		move_speed = 0.0
+		
+	else: idle = true
 
 
 func assignBeeType(newType):
@@ -53,13 +57,15 @@ func assignBeeType(newType):
 	statmoveSpeed = newType.move_speed
 	workspeed = newType.workspeed
 	sleepTime = newType.sleepTime
-	$BeeSprite.texture = newType.texture
+	if $BeeSprite != null:
+		$BeeSprite.texture = newType.texture
 
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			cancel_move_to_room()
+			idle = false
 			is_dragging = true
 			_drag_offset = global_position - get_global_mouse_position()
 			drag_started.emit(self)
@@ -71,12 +77,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		is_dragging = false
+		if assigned_room == null and not sleeping and not _is_moving_to_room:
+			idle = true
 		drag_ended.emit(self, get_global_mouse_position())
 
 
 func assignRoom(room: Room):
 	assigned_room = room
+	idle = false
 	move_speed = 0
+	if sprite != null:
+		sprite.position = Vector2.ZERO
 	room.addBee(self)
 
 
@@ -85,11 +96,14 @@ func removeRoom():
 		assigned_room.removeBee(self)
 	assigned_room = null
 	move_speed = statmoveSpeed
+	if not _is_moving_to_room and not sleeping and not is_dragging:
+		idle = true
 
 
 func sleep(room: Room):
 	print("test")
 	sleeping = true
+	idle = false
 	_wake_hour = (Global.hours + sleepTime) % 24
 	if room != null:
 		move_to_room(room)
@@ -103,19 +117,14 @@ func wakeUp():
 		move_speed = float(statmoveSpeed)
 	if assigned_room != null:
 		move_to_room(assigned_room)
-	
+	else:
+		idle = true
 
 
 func _is_wake_time_reached() -> bool:
 	if _wake_hour < 0:
 		return false
-	# Falls die Schlafenszeit über Mitternacht geht (z. B. Einschlafen 22 Uhr, Weckzeit 2 Uhr):
-	# Nachts (hours >= 18) warten wir bis zur Weckzeit, tagsüber (hours < 18) sind wir über Mitternacht hinaus.
 	if Global.hours >= _wake_hour:
-		# Sonderfall: Biene schläft z. B. um 18 Uhr ein und sleepTime = 2 -> Weckzeit 20 Uhr.
-		# Um 21 Uhr ist hours >= _wake_hour wahr -> wecken.
-		# Sonderfall: Biene schläft um 22 Uhr ein und sleepTime = 4 -> _wake_hour = 2.
-		# Um 23 Uhr ist hours (23) >= _wake_hour (2), aber sie soll erst um 2 Uhr aufwachen!
 		if _wake_hour < Global.day_start_hour and Global.is_night:
 			return false
 		return true
@@ -158,7 +167,8 @@ func _process_move_to_room(delta: float) -> void:
 
 	if sprite != null:
 		sprite.time_passed += delta
-		sprite.position.y += cos(sprite.time_passed * sprite.hover_frequency) * sprite.hover_amplitude * sprite.hover_frequency * delta
+		sprite.position.x = 0.0
+		sprite.position.y = sin(sprite.time_passed * sprite.hover_frequency) * sprite.hover_amplitude
 
 	var step: float = move_speed * delta
 	if distance <= ROOM_ARRIVAL_THRESHOLD or step >= distance:
