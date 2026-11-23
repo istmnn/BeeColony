@@ -201,7 +201,9 @@ func _process_move_to_room(delta: float) -> void:
 
 func _on_happiness_timeout():
 	if(sleeping): happiness += 2
+	elif(assigned_room== null): happiness +=1
 	else: happiness -= 1
+	happiness = clamp(happiness, 0, 100)
 	if(happiness<= 0):
 		removeRoom() 
 	elif(happiness<= 25):
