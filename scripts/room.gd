@@ -25,6 +25,7 @@ func setRoomType(newType: RoomType):
 	roomType = newType
 	assigned = true
 	$TextureRect.texture = newType.texture
+	roomType._ready()
 
 
 func _on_area_2d_mouse_entered():
