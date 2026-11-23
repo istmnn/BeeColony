@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_4k4fa")
-move_speed = 500
+move_speed = 100
 texture = ExtResource("2_a2s1v")
 workspeed = 1.0
 sleepTime = 5

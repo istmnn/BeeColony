@@ -6,6 +6,7 @@ extends Node2D
 @onready var sprite: Sprite2D = $BeeSprite
 @export var sprite_image: Texture2D
 @export var beeType: BeeType
+@export var room_spread_radius: float = 70.0
 
 signal drag_started(worker: Bee)
 signal drag_ended(worker: Bee, drop_global_position: Vector2)
@@ -22,6 +23,7 @@ var sleeping: bool = false
 var _wake_hour: int = -1
 
 var target_room: Room = null
+var _target_position: Vector2 = Vector2.ZERO
 var _is_moving_to_room: bool = false
 const ROOM_ARRIVAL_THRESHOLD: float = 12.0
 
@@ -123,7 +125,7 @@ func _is_wake_time_reached() -> bool:
 	return false
 
 
-# Ändert assigned_room NICHT – fliegt nur zum angegebenen Raum
+# Ändert assigned_room NICHT – fliegt zu einer leicht versetzten Position im Raum
 func move_to_room(room: Room) -> void:
 	if room == null:
 		return
@@ -131,6 +133,12 @@ func move_to_room(room: Room) -> void:
 	target_room = room
 	_is_moving_to_room = true
 	idle = false
+
+	var random_offset = Vector2(
+		randf_range(-room_spread_radius, room_spread_radius),
+		randf_range(-room_spread_radius * 0.5, room_spread_radius * 0.5)
+	)
+	_target_position = room.global_position + random_offset
 
 	var speed: float = float(statmoveSpeed) if statmoveSpeed > 0 else move_speed
 	if speed <= 0.0:
@@ -144,8 +152,7 @@ func cancel_move_to_room() -> void:
 
 
 func _process_move_to_room(delta: float) -> void:
-	var goal: Vector2 = target_room.global_position
-	var to_goal: Vector2 = goal - global_position
+	var to_goal: Vector2 = _target_position - global_position
 	var distance: float = to_goal.length()
 
 	if sprite != null and abs(to_goal.x) > 0.05:
@@ -158,7 +165,7 @@ func _process_move_to_room(delta: float) -> void:
 
 	var step: float = move_speed * delta
 	if distance <= ROOM_ARRIVAL_THRESHOLD or step >= distance:
-		global_position = goal
+		global_position = _target_position
 		var reached_room: Room = target_room
 		_is_moving_to_room = false
 		target_room = null
