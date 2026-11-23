@@ -16,13 +16,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(roomType != null):	roomType._process(delta)
+	if(roomType != null):
+		roomType._process(delta)
+		$Bees.text = str(roomType.filledSlots) + "/" + str(roomType.slots)
 	pass
 
 func setRoomType(newType: RoomType):
 	if(newType == null):
 		return
 	roomType = newType
+	$Bees.visible = true
 	assigned = true
 	$TextureRect.texture = newType.texture
 	roomType._ready()

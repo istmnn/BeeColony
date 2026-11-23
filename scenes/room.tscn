@@ -7,7 +7,6 @@ radius = 116.01724
 
 [node name="Room" type="Node2D" unique_id=1557722708]
 script = ExtResource("1_ffxv4")
-assigned = null
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=671175407]
 offset_left = -228.0
@@ -22,6 +21,14 @@ expand_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454445882]
 position = Vector2(0, 21)
 shape = SubResource("CircleShape2D_3xd07")
+
+[node name="Bees" type="Label" parent="." unique_id=1614183774]
+visible = false
+offset_left = -10.0
+offset_top = -91.0
+offset_right = 30.0
+offset_bottom = -68.0
+text = "test"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
