@@ -1,6 +1,7 @@
 extends RoomType
 class_name SleepRoom
 @export var bedAmount : int
+var usedBeds = 0
 
 
 # Called when the node enters the scene tree for the first time.

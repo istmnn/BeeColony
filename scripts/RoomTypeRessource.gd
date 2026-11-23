@@ -64,7 +64,7 @@ func getWorkSpeed():
 
 	var bee_speed: float = 0.0
 	for bee in assignedBees:
-		if bee != null and is_instance_valid(bee):
+		if bee != null and is_instance_valid(bee) and !bee.sleeping:
 			bee_speed += float(bee.workspeed)
 
 	if bee_speed <= 0.0:

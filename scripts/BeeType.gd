@@ -3,6 +3,7 @@ extends Resource
 @export var move_speed: int;
 @export var texture : Texture2D;
 @export var workspeed : float
+@export var sleepTime: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

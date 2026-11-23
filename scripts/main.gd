@@ -12,10 +12,20 @@ func _process(_delta: float) -> void:
 	build_manager.processMethode(_delta)
 	pass
 	
-func nightStarted():
+func nightStarted() -> void:
 	$Background.modulate = Color(0.35, 0.4, 0.65, 1.0)
-	pass
+	for bee in $BeeManger.allBees:
+		if bee.sleeping:
+			continue
+		for room in $Rooms.get_children():
+			if room.roomType is SleepRoom and room.roomType.usedBeds < room.roomType.bedAmount:
+				room.roomType.usedBeds += 1
+				bee.sleep(room)
+				break
 
 func dayStarted():
 	$Background.modulate = Color.WHITE
+	for room in $Rooms.get_children():
+		if room.roomType is SleepRoom:
+			room.roomType.usedBeds = 0
 	pass

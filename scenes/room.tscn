@@ -7,6 +7,7 @@ radius = 116.01724
 
 [node name="Room" type="Node2D" unique_id=1557722708]
 script = ExtResource("1_ffxv4")
+assigned = null
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=671175407]
 offset_left = -228.0
