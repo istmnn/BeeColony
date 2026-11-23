@@ -23,4 +23,15 @@ scale = Vector2(5.5384603, 5.5384583)
 position = Vector2(-5, 3)
 shape = SubResource("CircleShape2D_3xd07")
 
+[node name="HappinessUI" type="Label" parent="BeeSprite" unique_id=12645848]
+offset_left = -83.07689
+offset_top = -227.07678
+offset_right = 72.963165
+offset_bottom = -127.38452
+theme_override_font_sizes/font_size = 70
+text = "test"
+
+[node name="Happiness" type="Timer" parent="." unique_id=1432593637]
+
 [connection signal="input_event" from="BeeSprite/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="Happiness" to="." method="_on_happiness_timeout"]

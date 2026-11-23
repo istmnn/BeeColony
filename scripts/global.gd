@@ -2,7 +2,7 @@ extends Node
 var maxStorage : int = 300
 var bedAmount : int = 0
 var beeAmount: int = 0
-var day_time_scale: float = 6000.0
+var day_time_scale: float = 60.0
 var night_speed_multiplier: float = 2.0
 var day_start_hour: int = 6   # 06:00 Uhr
 var night_start_hour: int = 18 # 18:00 Uhr

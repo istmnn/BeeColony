@@ -16,23 +16,28 @@ var is_dragging: bool = false
 var _drag_offset: Vector2 = Vector2.ZERO
 var assigned_room: Room = null
 var statmoveSpeed: int
+var statworkspeed: float
 var workspeed: float
 @onready var beeSprite = $BeeSprite
 @export var sleepTime: int
 var sleeping: bool = false
 var _wake_hour: int = -1
-
 var target_room: Room = null
 var _target_position: Vector2 = Vector2.ZERO
 var _is_moving_to_room: bool = false
 const ROOM_ARRIVAL_THRESHOLD: float = 12.0
-
+var happiness = 100
+@onready var happinessTimer = $Happiness
+var happinessTimeIdle: int
+var happinessTimeWorking: int
 
 func _ready():
+	$BeeSprite/HappinessUI.text = str(happiness) + "%"
 	idle = true
 	if sprite != null and sprite_image != null:
 		sprite.texture = sprite_image
-
+	happinessTimer.wait_time = 5.0
+	happinessTimer.start()
 
 func _process(delta):
 	if is_dragging:
@@ -56,7 +61,11 @@ func assignBeeType(newType):
 	move_speed = newType.move_speed
 	statmoveSpeed = newType.move_speed
 	workspeed = newType.workspeed
+	statworkspeed = newType.workspeed
 	sleepTime = newType.sleepTime
+	happinessTimeIdle = newType.happinessTimeIdle
+	happinessTimeWorking = newType.happinessTimeWorking
+	happinessTimer.wait_time = newType.happinessTimeIdle
 	if $BeeSprite != null:
 		$BeeSprite.texture = newType.texture
 
@@ -83,7 +92,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func assignRoom(room: Room):
+	if(happiness <= 0): return
 	assigned_room = room
+	happinessTimer.wait_time = happinessTimeWorking
 	idle = false
 	move_speed = 0
 	if sprite != null:
@@ -94,6 +105,7 @@ func assignRoom(room: Room):
 func removeRoom():
 	if assigned_room != null:
 		assigned_room.removeBee(self)
+	happinessTimer.wait_time = happinessTimeIdle
 	assigned_room = null
 	move_speed = statmoveSpeed
 	if not _is_moving_to_room and not sleeping and not is_dragging:
@@ -185,3 +197,16 @@ func _process_move_to_room(delta: float) -> void:
 		return
 
 	global_position += to_goal.normalized() * step
+
+
+func _on_happiness_timeout():
+	if(sleeping): happiness += 2
+	else: happiness -= 1
+	if(happiness<= 0):
+		removeRoom() 
+	elif(happiness<= 25):
+		workspeed = statworkspeed * 0.25
+	elif(happiness<= 50):
+		workspeed = statworkspeed * 0.5
+	else: workspeed = statworkspeed
+	$BeeSprite/HappinessUI.text = str(happiness) + "%"

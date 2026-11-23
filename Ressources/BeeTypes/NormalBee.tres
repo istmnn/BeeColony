@@ -9,4 +9,6 @@ move_speed = 100
 texture = ExtResource("2_a2s1v")
 workspeed = 1.0
 sleepTime = 10
+happinessTimeIdle = 15
+happinessTimeWorking = 10
 metadata/_custom_type_script = "uid://bg5fjqfa51huy"

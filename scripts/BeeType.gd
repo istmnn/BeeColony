@@ -4,6 +4,8 @@ extends Resource
 @export var texture : Texture2D;
 @export var workspeed : float
 @export var sleepTime: int
+@export var happinessTimeIdle: int
+@export var happinessTimeWorking: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
