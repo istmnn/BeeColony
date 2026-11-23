@@ -22,7 +22,8 @@ func nightStarted() -> void:
 				room.roomType.usedBeds += 1
 				bee.sleep(room)
 				break
-
+		if !bee.sleeping:
+			bee.happiness -= 25
 func dayStarted():
 	$Background.modulate = Color.WHITE
 	for room in $Rooms.get_children():
